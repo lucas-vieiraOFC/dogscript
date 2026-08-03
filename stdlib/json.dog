@@ -1,0 +1,9 @@
+@extern func create __json_parse(input str) map;
+@extern func create __json_stringify(data map) str;
+@extern func create __json_pretty(data map) str;
+@extern func create __json_valid(input str) bool;
+
+func create parse(input str) map { return __json_parse(input); }
+func create stringify(data map) str { return __json_stringify(data); }
+func create pretty(data map) str { return __json_pretty(data); }
+func create valid(input str) bool { return __json_valid(input); }

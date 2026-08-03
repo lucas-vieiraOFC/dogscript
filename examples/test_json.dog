@@ -1,0 +1,17 @@
+use <json>
+
+func create main() {
+    var create ok bool = true;
+    var create raw str = str("{\"name\":\"Rex\",\"age\":3}");
+    if json.valid(raw) = false then { ok = false; }
+    var create obj map = json.parse(raw);
+    var create out str = json.stringify(obj);
+    if out = null then { ok = false; }
+    if ok then {
+        print(str("PASS json"));
+    } else {
+        print(str("FAIL json"));
+    }
+}
+
+func exec main();

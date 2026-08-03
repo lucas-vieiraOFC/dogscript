@@ -1,0 +1,28 @@
+{
+  "name": "dogscript",
+  "displayName": "DogScript Language Support",
+  "description": "Syntax highlighting for DogScript (.dog)",
+  "version": "0.1.0",
+  "publisher": "dogscript",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": ["Programming Languages"],
+  "contributes": {
+    "languages": [
+      {
+        "id": "dogscript",
+        "aliases": ["DogScript", "dogscript"],
+        "extensions": [".dog"],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "dogscript",
+        "scopeName": "source.dogscript",
+        "path": "./dogscript.tmLanguage.json"
+      }
+    ]
+  }
+}

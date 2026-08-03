@@ -1,0 +1,10 @@
+use <io>
+
+func create main() {
+    io.println(str("Testing io..."));
+    io.progress(1, 2, str("io"));
+    io.progress(2, 2, str("io"));
+    print(str("PASS io"));
+}
+
+func exec main();

@@ -1,0 +1,94 @@
+{
+  "name": "DogScript",
+  "scopeName": "source.dogscript",
+  "patterns": [
+    { "include": "#comments" },
+    { "include": "#strings" },
+    { "include": "#numbers" },
+    { "include": "#keywords" },
+    { "include": "#types" },
+    { "include": "#operators" },
+    { "include": "#funcdecl" },
+    { "include": "#classecl" },
+    { "include": "#imports" }
+  ],
+  "repository": {
+    "comments": {
+      "patterns": [
+        {
+          "name": "comment.line.double-dash.dogscript",
+          "match": "--.*$"
+        },
+        {
+          "name": "comment.block.dogscript",
+          "begin": "-\\[",
+          "end": "\\]-"
+        }
+      ]
+    },
+    "strings": {
+      "patterns": [
+        {
+          "name": "string.quoted.double.dogscript",
+          "begin": "\"",
+          "end": "\"",
+          "patterns": [
+            { "name": "constant.character.escape.dogscript", "match": "\\\\." }
+          ]
+        }
+      ]
+    },
+    "numbers": {
+      "patterns": [
+        { "name": "constant.numeric.float.dogscript", "match": "\\b\\d+\\.\\d+\\b" },
+        { "name": "constant.numeric.integer.dogscript", "match": "\\b\\d+\\b" }
+      ]
+    },
+    "keywords": {
+      "patterns": [
+        {
+          "name": "keyword.control.dogscript",
+          "match": "\\b(func|create|exec|var|class|extends|if|elif|else|then|while|for|in|do|return|use|new|try|catch|finally|lambda|cast|const|null|true|false)\\b"
+        }
+      ]
+    },
+    "types": {
+      "patterns": [
+        { "name": "storage.type.dogscript", "match": "\\b(str|int|float|bool|list|map)\\b" }
+      ]
+    },
+    "operators": {
+      "patterns": [
+        { "name": "keyword.operator.dogscript", "match": "=>|!=|=|\\+|-|\\*|/|<|>" }
+      ]
+    },
+    "funcdecl": {
+      "patterns": [
+        {
+          "name": "entity.name.function.dogscript",
+          "match": "(?<=\\bfunc\\s+create\\s+)\\w+"
+        },
+        {
+          "name": "entity.name.function.call.dogscript",
+          "match": "(?<=\\bfunc\\s+exec\\s+)\\w+"
+        }
+      ]
+    },
+    "classecl": {
+      "patterns": [
+        {
+          "name": "entity.name.type.class.dogscript",
+          "match": "(?<=\\bclass\\s+create\\s+)\\w+"
+        }
+      ]
+    },
+    "imports": {
+      "patterns": [
+        {
+          "name": "support.class.library.dogscript",
+          "match": "(?<=\\buse\\s+<)[A-Za-z_][A-Za-z0-9_]*(?=>)"
+        }
+      ]
+    }
+  }
+}

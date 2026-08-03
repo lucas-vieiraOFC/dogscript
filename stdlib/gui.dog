@@ -1,0 +1,62 @@
+@extern func create __gui_init() bool;
+@extern func create __gui_window_create(title str, w int, h int) int;
+@extern func create __gui_window_show(handle int) null;
+@extern func create __gui_window_close(handle int) null;
+@extern func create __gui_button_create(handle int, label str, x int, y int, w int, h int) int;
+@extern func create __gui_label_create(handle int, text str, x int, y int) int;
+@extern func create __gui_input_create(handle int, placeholder str, x int, y int, w int, h int) int;
+@extern func create __gui_input_value(id int) str;
+@extern func create __gui_on_click(id int, callback func) null;
+@extern func create __gui_loop() null;
+@extern func create __gui_alert(msg str) null;
+@extern func create __gui_color(r int, g int, b int) null;
+
+func create init() bool { return __gui_init(); }
+
+class create Window {
+    var handle int;
+    var title str;
+    var width int;
+    var height int;
+
+    func create Window(t str, w int, h int) {
+        title = t;
+        width = w;
+        height = h;
+        handle = __gui_window_create(t, w, h);
+    }
+
+    func create show() null { return __gui_window_show(handle); }
+    func create close() null { return __gui_window_close(handle); }
+}
+
+class create Button {
+    var id int;
+
+    func create Button(label str, x int, y int, w int, h int, win Window) {
+        id = __gui_button_create(win.handle, label, x, y, w, h);
+    }
+
+    func create onClick(callback func) null { return __gui_on_click(id, callback); }
+}
+
+class create Label {
+    var id int;
+
+    func create Label(text str, x int, y int, win Window) {
+        id = __gui_label_create(win.handle, text, x, y);
+    }
+}
+
+class create TextInput {
+    var id int;
+
+    func create TextInput(placeholder str, x int, y int, w int, h int, win Window) {
+        id = __gui_input_create(win.handle, placeholder, x, y, w, h);
+    }
+
+    func create value() str { return __gui_input_value(id); }
+}
+
+func create loop() null { return __gui_loop(); }
+func create alert(msg str) null { return __gui_alert(msg); }

@@ -1,0 +1,33 @@
+@extern func create __list_append(l list, item any) list;
+@extern func create __list_prepend(l list, item any) list;
+@extern func create __list_pop(l list) any;
+@extern func create __list_remove(l list, item any) list;
+@extern func create __list_index(l list, item any) int;
+@extern func create __list_contains(l list, item any) bool;
+@extern func create __list_len(l list) int;
+@extern func create __list_reverse(l list) list;
+@extern func create __list_sort(l list) list;
+@extern func create __list_slice(l list, start int, end int) list;
+@extern func create __list_concat(a list, b list) list;
+@extern func create __list_unique(l list) list;
+@extern func create __list_flatten(l list) list;
+@extern func create __list_map(l list, fn func) list;
+@extern func create __list_filter(l list, fn func) list;
+@extern func create __list_reduce(l list, fn func, init any) any;
+
+func create append(l list, item any) list { return __list_append(l, item); }
+func create prepend(l list, item any) list { return __list_prepend(l, item); }
+func create pop(l list) any { return __list_pop(l); }
+func create remove(l list, item any) list { return __list_remove(l, item); }
+func create index(l list, item any) int { return __list_index(l, item); }
+func create contains(l list, item any) bool { return __list_contains(l, item); }
+func create len(l list) int { return __list_len(l); }
+func create reverse(l list) list { return __list_reverse(l); }
+func create sort(l list) list { return __list_sort(l); }
+func create slice(l list, start int, end int) list { return __list_slice(l, start, end); }
+func create concat(a list, b list) list { return __list_concat(a, b); }
+func create unique(l list) list { return __list_unique(l); }
+func create flatten(l list) list { return __list_flatten(l); }
+func create map(l list, fn func) list { return __list_map(l, fn); }
+func create filter(l list, fn func) list { return __list_filter(l, fn); }
+func create reduce(l list, fn func, init any) any { return __list_reduce(l, fn, init); }
