@@ -1,8 +1,0 @@
-use <requests>
-
-func create main() {
-    var create res map = requests.get(str("http://example.com"));
-    print(res["status_code"]);
-}
-
-func exec main();

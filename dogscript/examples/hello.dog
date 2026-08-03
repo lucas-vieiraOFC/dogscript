@@ -1,5 +1,0 @@
-func create main() {
-    print(str("Hello, DogScript!"));
-}
-
-func exec main();

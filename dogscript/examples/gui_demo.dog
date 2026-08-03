@@ -1,9 +1,0 @@
-use <gui>
-
-func create main() {
-    if gui.init() then {
-        gui.alert(str("DogScript GUI ready"));
-    }
-}
-
-func exec main();
