@@ -1,0 +1,18 @@
+@extern func create __http_get(url str, headers map) map;
+@extern func create __http_post(url str, body str, headers map) map;
+@extern func create __http_put(url str, body str, headers map) map;
+@extern func create __http_delete(url str, headers map) map;
+@extern func create __http_patch(url str, body str, headers map) map;
+@extern func create __json_parse(input str) map;
+
+func create get(url str) map { return __http_get(url, map()); }
+func create get(url str, headers map) map { return __http_get(url, headers); }
+func create post(url str, body str) map { return __http_post(url, body, map()); }
+func create post(url str, body str, headers map) map { return __http_post(url, body, headers); }
+func create put(url str, body str) map { return __http_put(url, body, map()); }
+func create put(url str, body str, headers map) map { return __http_put(url, body, headers); }
+func create patch(url str, body str) map { return __http_patch(url, body, map()); }
+func create patch(url str, body str, headers map) map { return __http_patch(url, body, headers); }
+func create delete(url str) map { return __http_delete(url, map()); }
+func create delete(url str, headers map) map { return __http_delete(url, headers); }
+func create json(response map) map { return __json_parse(response["body"]); }

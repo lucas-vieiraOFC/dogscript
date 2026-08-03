@@ -1,0 +1,21 @@
+use <requests>
+use <json>
+
+func create main() {
+    var create ok bool = true;
+    var create res map = requests.get(str("http://example.com"));
+    if res["status_code"] < 100 then {
+        ok = false;
+    }
+    var create obj map = requests.json(res);
+    if obj = null then {
+        -- tolerated in offline mode
+    }
+    if ok then {
+        print(str("PASS requests"));
+    } else {
+        print(str("FAIL requests"));
+    }
+}
+
+func exec main();

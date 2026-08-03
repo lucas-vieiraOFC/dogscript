@@ -1,0 +1,12 @@
+use <gui>
+
+func create main() {
+    var create ok bool = gui.init();
+    if ok then {
+        print(str("PASS gui"));
+    } else {
+        print(str("FAIL gui"));
+    }
+}
+
+func exec main();

@@ -1,0 +1,72 @@
+%YAML 1.2
+---
+name: DogScript
+file_extensions:
+  - dog
+scope: source.dogscript
+
+contexts:
+  main:
+    - include: comments
+    - include: strings
+    - include: numbers
+    - include: keywords
+    - include: types
+    - include: operators
+    - include: function_names
+    - include: class_names
+    - include: imports
+
+  comments:
+    - match: --.*$
+      scope: comment.line.double-dash.dogscript
+    - match: -\[
+      scope: punctuation.definition.comment.begin.dogscript
+      push:
+        - meta_scope: comment.block.dogscript
+        - match: \]-
+          scope: punctuation.definition.comment.end.dogscript
+          pop: true
+
+  strings:
+    - match: '"'
+      scope: punctuation.definition.string.begin.dogscript
+      push:
+        - meta_scope: string.quoted.double.dogscript
+        - match: \\.
+          scope: constant.character.escape.dogscript
+        - match: '"'
+          scope: punctuation.definition.string.end.dogscript
+          pop: true
+
+  numbers:
+    - match: \b\d+\.\d+\b
+      scope: constant.numeric.float.dogscript
+    - match: \b\d+\b
+      scope: constant.numeric.integer.dogscript
+
+  keywords:
+    - match: \b(func|create|exec|var|class|extends|if|elif|else|then|while|for|in|do|return|use|new|try|catch|finally|lambda|cast|const|null|true|false)\b
+      scope: keyword.control.dogscript
+
+  types:
+    - match: \b(str|int|float|bool|list|map)\b
+      scope: storage.type.dogscript
+
+  operators:
+    - match: =>|!=|=|\+|-|\*|/|<|>
+      scope: keyword.operator.dogscript
+
+  function_names:
+    - match: (?<=\bfunc\s+create\s+)\w+
+      scope: entity.name.function.dogscript
+    - match: (?<=\bfunc\s+exec\s+)\w+
+      scope: entity.name.function.call.dogscript
+
+  class_names:
+    - match: (?<=\bclass\s+create\s+)\w+
+      scope: entity.name.type.class.dogscript
+
+  imports:
+    - match: (?<=\buse\s+<)[A-Za-z_][A-Za-z0-9_]*(?=>)
+      scope: support.class.library.dogscript
